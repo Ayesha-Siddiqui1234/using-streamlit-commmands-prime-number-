@@ -1,40 +1,40 @@
 import streamlit as st
 
-
 st.image("prime.jpg")
-st.title("checking for prime number")
-num=st.text_input("enter any number")
+st.title("Checking for Prime Number")
+
+num = st.text_input("Enter any number")
 if num.isdigit():
-    num=int(num)
+    num = int(num)
     if num > 1:
-        for i in range(2,num):
-              if num%i==0:
-                 st.warning("not prime number")
-                 st.select_slider("Rate the program",["Bad","Average","Good","Excellent","Outstanding"])     
-                 st.button("Submit")
-                 break
+        for i in range(2, num):
+            if num % i == 0:
+                st.warning("Not a prime number")
+                st.select_slider("Rate the program", ["Bad", "Average", "Good", "Excellent", "Outstanding"], key="slider_not_prime")
+                st.button("Submit", key="button1")   #used keys for uniqueness
+                break
         else:
-            st.success("prime number")
-            st.markdown("### congratulations!!")
-            st.select_slider("Rate the program",["Bad","Average","Good","Excellent","Outstanding"])     
-            st.button("Submit")
+            st.success("Prime number")
+            st.markdown("### Congratulations!!")
+            st.select_slider("Rate the program", ["Bad", "Average", "Good", "Excellent", "Outstanding"], key="slider_prime")
+            st.button("Submit", key="button2")
             st.balloons()
     else:
-        st.error("enter a number greater than 1")
-        st.select_slider("Rate the program",["Bad","Average","Good","Excellent","Outstanding"])     
-        st.button("Submit")        
+        st.error("Enter a number greater than 1")
+        st.select_slider("Rate the program", ["Bad", "Average", "Good", "Excellent", "Outstanding"], key="slider_low_num")
+        st.button("Submit", key="button3")
 else:
     if num:
-        st.error("error in valid number")
-        st.select_slider("Rate the program",["Bad","Average","Good","Excellent","Outstanding"])     
-        st.button("Done")  
+        st.error("Error: Invalid number")
+        st.select_slider("Rate the program", ["Bad", "Average", "Good", "Excellent", "Outstanding"], key="slider_invalid_num")
+        st.button("Done", key="button4")
 
 st.sidebar.title("USER INFO:")
 st.sidebar.text_input("Enter your name")
 st.sidebar.text_input("Enter your email address")
 st.sidebar.file_uploader("Drop your image")
-st.sidebar.radio("select the gender",["man","woman","other"])
-st.sidebar.button("Submit")
+st.sidebar.radio("Select your gender", ["Man", "Woman", "Other"])
+st.sidebar.button("Submit", key="sidebar_button")
 
 
 
